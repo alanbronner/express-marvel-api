@@ -208,3 +208,5 @@ router.get("/user/:id/preferences/favoris", async (req, res) => {
   }
 });
 module.exports = router;
+
+// ssh -i "my-aws-key-MongoDB-express-marvel-api.pem" ubuntu@ec2-35-180-116-177.eu-west-3.compute.amazonaws.com
