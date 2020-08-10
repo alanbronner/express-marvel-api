@@ -16,7 +16,7 @@ const emailer = async (email, token, name, version) => {
     subject: "Please confirm your account! 🙋‍♀️🙋‍♂️",
     html: `<h1>Hello ${name}!</h1>
       <p>You're almost there one more step and it will be good</p>
-      <p>Please, click on the following <a href="http://localhost:3001/confirmation/${token}">link</a> to verify your account</p>  
+      <p>Please, click on the following <a href="https://lucid-tesla-edf314.netlify.app/confirmation/${token}">link</a> to verify your account</p>  
       <p>Until next time,</p>
       <p>The Avengers 💪 (email send from a node server)</p>`,
   };
