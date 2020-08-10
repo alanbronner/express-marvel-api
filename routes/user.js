@@ -120,7 +120,8 @@ router.post("/user/log_in", async (req, res) => {
 
 // auth
 router.put(
-  "/user/preferences/add_favoris/:id/:favoriteType/:favoriteId/:favoriteName/",
+  "/user/preferences/add_favoris/:id/:favoriteType/:favoriteId/:favoriteName/:fav",
+
   async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.params.id });
@@ -128,11 +129,11 @@ router.put(
         return res.status(400).json({ error: "User id not found" });
       }
       if (user) {
-        const { id, favoriteType, favoriteId, favoriteName } = req.params;
+        const { id, favoriteType, favoriteId, favoriteName, fav } = req.params;
 
         const copyFavoris = [...user.preferences.favoris];
         const index = copyFavoris.findIndex((item) => item.id === favoriteId);
-
+        console.log(req.params);
         if (index !== -1) {
           return res.status(400).json({ error: "Favorite already in favoris" });
         }
@@ -142,6 +143,7 @@ router.put(
           type: favoriteType,
           name: favoriteName,
           modified: new Date(),
+          fav: fav,
         };
 
         copyFavoris.push(favorite);
@@ -208,5 +210,3 @@ router.get("/user/:id/preferences/favoris", async (req, res) => {
   }
 });
 module.exports = router;
-
-// ssh -i "my-aws-key-MongoDB-express-marvel-api.pem" ubuntu@ec2-35-180-116-177.eu-west-3.compute.amazonaws.com
